@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Klinik Avicena - Soppeng</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        :root {
+            --primary: #1a5f7a;
+            --secondary: #57c5b6;
+            --accent: #159895;
+            --light: #f9f9f9;
+            --dark: #333;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo i {
+            color: var(--secondary);
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+        }
+        nav a:hover {
+            border-bottom: 2px solid var(--secondary);
+        }
+        /* Mobile menu icon */
+        .mobile-menu {
+            display: none;
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
+        }
+        /* Hero */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placehold.co/1920x1080') center/cover no-repeat;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            width: 100%;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--dark);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--secondary);
+        }
+        .cta-button:hover {
+            background-color: transparent;
+            color: white;
+        }
+        /* Services */
+        .services {
+            padding: 4rem 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .service-content {
+            padding: 1.5rem;
+        }
+        .service-content h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        /* Gallery */
+        .gallery {
+            padding: 4rem 0;
+            background-color: white;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        .gallery-grid img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .gallery-grid img:hover {
+            transform: scale(1.05);
+        }
+        /* Testimonials */
+        .testimonials {
+            padding: 4rem 0;
+            background-color: var(--light);
+        }
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+        }
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        .testimonial-card h4 {
+            color: var(--primary);
+        }
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        /* WhatsApp button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            padding: 12px 16px;
+            border-radius: 50px;
+            font-size: 18px;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 1000;
+        }
+        /* Responsive - Mobile Menu */
+        @media (max-width: 768px) {
+            nav ul {
+                position: absolute;
+                top: 70px;
+                right: 0;
+                background-color: var(--primary);
+                width: 200px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+                display: none;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                border-radius: 0 0 0 10px;
+            }
+            nav ul li {
+                width: 100%;
+            }
+            nav ul li a {
+                display: block;
+                width: 100%;
+                padding: 1rem;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            .mobile-menu {
+                display: block;
+            }
+            nav ul.active {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-content">
+        <div class="logo"><i class="fas fa-stethoscope"></i> Klinik Avicena</div>
+        <nav>
+            <ul id="nav-links">
+                <li><a href="#hero">Beranda</a></li>
+                <li><a href="#services">Layanan</a></li>
+                <li><a href="#gallery">Galeri</a></li>
+                <li><a href="#testimonials">Testimoni</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
+        <div class="mobile-menu" id="mobile-menu">
+            <i class="fas fa-stethoscope"></i>
+        </div>
+    </div>
+</header>
+
+<section class="hero" id="hero">
+    <div class="container hero-content">
+        <h1>Selamat Datang di Klinik Avicena</h1>
+        <p>Praktek Dokter Hasnawati, Sp.PD, FINASIM & Apotek Avicena - Pelayanan kesehatan terbaik untuk masyarakat Soppeng.</p>
+        <a href="#services" class="cta-button">Lihat Layanan</a>
+    </div>
+</section>
+
+<section id="services" class="services">
+    <div class="container">
+        <div class="section-title"><h2>Layanan Kami</h2></div>
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="https://placehold.co/600x400" alt="Pemeriksaan Umum" />
+                <div class="service-content">
+                    <h3>Pemeriksaan Umum</h3>
+                    <p>Pelayanan pemeriksaan kesehatan menyeluruh oleh tenaga medis profesional.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://placehold.co/600x400" alt="Spesialis Penyakit Dalam" />
+                <div class="service-content">
+                    <h3>Spesialis Penyakit Dalam</h3>
+                    <p>Ditangani langsung oleh dr. Hasnawati, Sp.PD, FINASIM.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://placehold.co/600x400" alt="Apotek Lengkap" />
+                <div class="service-content">
+                    <h3>Apotek Lengkap</h3>
+                    <p>Menjual obat-obatan resmi dan aman sesuai resep dokter.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="gallery" class="gallery">
+    <div class="container">
+        <div class="section-title"><h2>Galeri Foto</h2></div>
+        <div class="gallery-grid">
+            <img src="https://placehold.co/400x300" alt="Foto 1" />
+            <img src="https://placehold.co/400x300" alt="Foto 2" />
+            <img src="https://placehold.co/400x300" alt="Foto 3" />
+            <img src="https://placehold.co/400x300" alt="Foto 4" />
+        </div>
+    </div>
+</section>
+
+<section id="testimonials" class="testimonials">
+    <div class="container">
+        <div class="section-title"><h2>Testimoni Pasien</h2></div>
+        <div class="testimonial-card">
+            <p>"Pelayanannya ramah dan profesional. Saya merasa sangat terbantu."</p>
+            <h4>- Bapak Andi</h4>
+        </div>
+        <div class="testimonial-card">
+            <p>"Dokternya teliti dan sabar menjelaskan kondisi kesehatan saya."</p>
+            <h4>- Ibu Sari</h4>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="contact">
+    <div class="container section-title">
+        <h2>Kontak & Alamat</h2>
+        <p>Praktek Dokter Hasnawati, Sp.PD, FINASIM & Apotek Avicena<br />
+        Jln. Andi Potto, Kelurahan Lemba, Kecamatan Lalabata, Watansoppeng, Kabupaten Soppeng, Sulawesi Selatan, Indonesia</p>
+        <p>Telepon/WhatsApp: <strong>0852-4296-5313</strong></p>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2025 Klinik Avicena Soppeng. All rights reserved.</p>
+</footer>
+
+<a href="https://wa.me/6285242965313?text=Halo%20Klinik%20Avicena,%20saya%20ingin%20bertanya%20tentang%20layanan" target="_blank" class="whatsapp-button">
+    <i class="fab fa-whatsapp"></i> Chat via WhatsApp
+</a>
+
+<script>
+    // Toggle mobile menu
+    document.getElementById('mobile-menu').addEventListener('click', function() {
+        document.getElementById('nav-links').classList.toggle('active');
+    });
+</script>
+
+</body>
+</html>
